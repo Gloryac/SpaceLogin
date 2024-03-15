@@ -1,5 +1,6 @@
 package com.example.spacelogin.composables
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -12,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Checkbox
@@ -119,12 +121,14 @@ fun LoginPage(navController: NavHostController) {
                 Spacer(modifier = Modifier.padding(10.dp))
                 Button(
                     onClick = { /* Handle login */ },
+
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(IntrinsicSize.Min),
+                        .height(IntrinsicSize.Min)
+                        .background(Color(0xFFFC4484), shape = RoundedCornerShape(8.dp)),
 
                 ) {
-                    Text(text = "Log In", fontSize = 20.sp)
+                    Text(text = "Log In", fontSize = 20.sp, color = Color.White)
                 }
                 Spacer(modifier = Modifier.padding(20.dp))
                 Row(
@@ -137,7 +141,7 @@ fun LoginPage(navController: NavHostController) {
                     )
                     Text(
                         text = "Sign Up",
-                        color = Color.Blue,
+                        color = Color(0xFFFC4484),
                         modifier = Modifier.clickable(onClick = { navController.navigate("register") })
                     )
                 }

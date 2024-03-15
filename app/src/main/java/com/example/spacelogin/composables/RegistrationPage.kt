@@ -15,8 +15,10 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.ClickableText
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Checkbox
+import androidx.compose.material.CheckboxDefaults
 import androidx.compose.material.Icon
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
@@ -40,7 +42,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.spacelogin.R
-
 
 //@Composable
 /*fun RegistrationPage() {
@@ -246,7 +247,8 @@ fun RegistrationPage(navController: NavHostController) {
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Checkbox(
                             checked = termsAccepted.value,
-                            onCheckedChange = { termsAccepted.value = it }
+                            onCheckedChange = { termsAccepted.value = it },
+                            colors = CheckboxDefaults.colors(checkedColor = Color.Black)
                         )
                         Text(
                             text = "I agree to the Terms and Conditions",
@@ -255,28 +257,36 @@ fun RegistrationPage(navController: NavHostController) {
                     }
                     Spacer(modifier = Modifier.padding(10.dp))
                     Button(
-                        onClick = { /* Navigate to login page */ },
+                        onClick = { navController.navigate("login") },
+                        //colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFFFC4484), contentColor = Color.White),
                         modifier = Modifier
                             .fillMaxWidth()
-                            .height(50.dp),
+                            .height(50.dp)
+                            .background(Color(0xFFFC4484), shape = RoundedCornerShape(8.dp)),
                         enabled = termsAccepted.value
                     ) {
-                        Text(text = "Sign Up", fontSize = 20.sp)
+                        Text(text = "Sign Up", fontSize = 20.sp, color = Color.White)
                     }
                     Spacer(modifier = Modifier.padding(20.dp))
-                    Text(
-                        text = "Already have an account?",
-                        modifier = Modifier.align(Alignment.CenterHorizontally)
-                    )
-                    Text(
-                        text = "Log in",
-                        color = Color.Blue,
-                        modifier = Modifier.clickable(onClick = { navController.navigate("login") })
-                    )
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.Center
+                    ) {
+                        Text(
+                            text = "Already have an account?",
+                            modifier = Modifier.align(Alignment.CenterVertically)
+                        )
+                        Text(
+                            text = "Log in",
+                            color = Color(0xFFFC4484),
+                            modifier = Modifier.clickable(onClick = { navController.navigate("login") })
+                        )
+                    }
                     Spacer(modifier = Modifier.padding(20.dp))
                 }
             }
         }
     }
 }
+
 
